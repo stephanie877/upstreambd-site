@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upstream BD — See the deal before anyone else does.</title>
+  <meta name="description" content="Weekly pre-RFP intelligence for AEC business development teams. Get there before the project goes public." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --bg3: #16161f;
+      --border: rgba(255,255,255,0.08);
+      --accent: #4f6ef7;
+      --accent2: #7c9fff;
+      --text: #f0f0f5;
+      --muted: #8888a0;
+      --green: #22c55e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .logo { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
+    nav a.cta-nav {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    nav a.cta-nav:hover { opacity: 0.85; }
+
+    /* SECTIONS */
+    section { padding: 100px 40px; max-width: 860px; margin: 0 auto; }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding-top: 120px;
+      padding-bottom: 100px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(79,110,247,0.12);
+      border: 1px solid rgba(79,110,247,0.3);
+      color: var(--accent2);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+    h1 {
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    h1 em { color: var(--accent); font-style: normal; }
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
+    }
+    .cta-group { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    a.cta-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 40px rgba(79,110,247,0.35);
+    }
+    a.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 50px rgba(79,110,247,0.5); }
+    .cta-note { font-size: 13px; color: var(--muted); }
+    .cta-note strong { color: var(--text); }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* PROBLEM */
+    h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    p { color: var(--muted); font-size: 17px; line-height: 1.8; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--text); }
+
+    /* HOW IT WORKS */
+    .steps { display: flex; flex-direction: column; gap: 28px; margin-top: 48px; }
+    .step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: rgba(79,110,247,0.15);
+      border: 1px solid rgba(79,110,247,0.3);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .step-text h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .step-text p { font-size: 15px; margin: 0; }
+
+    /* WHAT YOU GET */
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    .feature {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .feature-icon { font-size: 24px; margin-bottom: 14px; }
+    .feature h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .feature p { font-size: 14px; margin: 0; }
+
+    /* SOURCES */
+    .sources { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .source-tag {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* OFFER */
+    .offer-box {
+      background: var(--bg2);
+      border: 1px solid rgba(79,110,247,0.4);
+      border-radius: 20px;
+      padding: 52px;
+      text-align: center;
+      margin-top: 48px;
+      box-shadow: 0 0 80px rgba(79,110,247,0.1);
+    }
+    .price { font-size: 64px; font-weight: 800; letter-spacing: -3px; color: var(--text); line-height: 1; }
+    .price span { font-size: 24px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+    .price-note { color: var(--muted); font-size: 15px; margin: 8px 0 32px; }
+    .perks { list-style: none; text-align: left; margin: 0 auto 40px; max-width: 420px; display: flex; flex-direction: column; gap: 12px; }
+    .perks li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: var(--text); }
+    .perks li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .spots {
+      display: inline-block;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    /* ABOUT */
+    .about-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px;
+      margin-top: 48px;
+    }
+    .about-box p { font-size: 16px; }
+
+    /* FAQ */
+    .faqs { display: flex; flex-direction: column; gap: 0; margin-top: 48px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .faq { padding: 28px; border-bottom: 1px solid var(--border); }
+    .faq:last-child { border-bottom: none; }
+    .faq h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .faq p { font-size: 15px; margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta {
+      text-align: center;
+      padding-bottom: 120px;
+    }
+    .final-cta h2 { margin-bottom: 16px; }
+    .final-cta p { margin-bottom: 40px; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 40px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      section { padding: 70px 20px; }
+      .features { grid-template-columns: 1fr; }
+      .offer-box { padding: 36px 24px; }
+      .step { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Upstream<span>BD</span></div>
+  <a class="cta-nav" href="https://buy.stripe.com/8x2bJ2aH89bb3D36dn9Ve00">Get Founding Access</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">🔒 10 Founding Member Spots — Only a Few Remain</div>
+  <h1>See the deal<br/><em>before anyone else does.</em></h1>
+  <p class="hero-sub">Upstream delivers weekly pre-RFP intelligence to AEC business development teams — so you're positioned before the project goes public.</p>
+  <div class="cta-group">
+    <a class="cta-primary" href="https://buy.stripe.com/8x2bJ2aH89bb3D36dn9Ve00">Claim Founding Member Access — $199/mo</a>
+    <p class="cta-note"><strong>Standard pricing: $349/month.</strong> Founding rate locked forever. No contracts.</p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PROBLEM -->
+<section>
+  <div class="label">The Problem</div>
+  <h2>You're always finding out too late.</h2>
+  <p>By the time a project hits a bid list, three other firms already have a relationship with the owner. The decision is halfway made before the RFP drops.</p>
+  <p>Most AEC BD teams are chasing — attending events, refreshing bid sites, waiting for the phone to ring. Meanwhile, the firms winning the work are positioned <strong>upstream</strong>, in planning meetings and early-stage conversations no one else is having.</p>
+  <p>The problem isn't your BD team. It's that finding early signals is manual, inconsistent, and time-consuming. <strong>Until now.</strong></p>
+</section>
+
+<hr class="divider" />
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="label">How It Works</div>
+  <h2>Upstream finds the signals.<br/>You work the relationship.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <h3>Tell us your target market</h3>
+        <p>Your geography, project types, and size range. We configure your intelligence layer to match your exact market.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <h3>We monitor the signals 24/7</h3>
+        <p>Upstream continuously scans planning boards, permit applications, zoning filings, and procurement portals — all public data, structured and filtered for you.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <h3>Your brief arrives every Monday</h3>
+        <p>Clean, actionable opportunities at the pre-RFP stage. Project type, location, current status, and who to contact — ready to act on before your competition knows the project exists.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        <h3>You get there first</h3>
+        <p>Make the call 60–120 days before the RFP drops. Build the relationship when it still matters. Stop chasing. Start positioning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- WHAT YOU GET -->
+<section>
+  <div class="label">What's Included</div>
+  <h2>Everything your BD team needs to move upstream.</h2>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">📋</div>
+      <h3>Weekly Intelligence Brief</h3>
+      <p>Projects at the planning and permit stage, filtered to your market. Delivered every Monday morning.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🎯</div>
+      <h3>Custom to Your Market</h3>
+      <p>Your geography. Your project types. Your size thresholds. No noise — only what's relevant to you.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3>60–120 Days Early</h3>
+      <p>See projects before they go to formal bid. Get in the room while relationships and positioning still matter.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔄</div>
+      <h3>Always On</h3>
+      <p>Upstream runs 24/7. You never miss a planning board agenda or permit filing in your target market again.</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 48px; margin-bottom: 16px;"><strong style="color: var(--text);">Data sourced from:</strong></p>
+  <div class="sources">
+    <div class="source-tag">🏛 Municipal Planning Portals</div>
+    <div class="source-tag">📋 Building Permit Applications</div>
+    <div class="source-tag">🗺 Zoning Variance Filings</div>
+    <div class="source-tag">🏗 State Capital Plans</div>
+    <div class="source-tag">📦 Federal Procurement (SAM.gov)</div>
+    <div class="source-tag">🏢 Commercial RE Databases</div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- OFFER -->
+<section>
+  <div class="label">Founding Member Offer</div>
+  <h2>Get in early. Lock your rate.</h2>
+  <div class="offer-box">
+    <div class="spots">🟢 Founding member spots still available</div>
+    <div class="price">$199<span>/mo</span></div>
+    <p class="price-note">Standard pricing: $349/month — founding rate locked forever</p>
+    <ul class="perks">
+      <li>Weekly pre-RFP intelligence brief, custom to your market</li>
+      <li>1 target geography + up to 3 project types</li>
+      <li>Monthly strategy call for first 90 days</li>
+      <li>Direct input on product roadmap</li>
+      <li>Founding member rate — locked forever</li>
+      <li>No contracts. Cancel anytime.</li>
+    </ul>
+    <a class="cta-primary" href="https://buy.stripe.com/8x2bJ2aH89bb3D36dn9Ve00">Claim Your Founding Member Spot</a>
+    <p style="margin-top: 16px; font-size: 13px;">First brief delivered within 2 weeks of signup.</p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ABOUT -->
+<section>
+  <div class="label">Who Built This</div>
+  <h2>Built by someone who lived the problem.</h2>
+  <div class="about-box">
+    <p>Upstream was built by <strong style="color: var(--text);">Stephanie</strong>, a former Director of Business Development in commercial construction.</p>
+    <p style="margin-top: 16px;">After years of building BD systems from the inside — and watching firms lose work simply because they found out too late — she built the intelligence layer she always wished she had.</p>
+    <p style="margin-top: 16px;"><strong style="color: var(--text);">Upstream is the system. You're still the relationship. We just make sure you're in the right room at the right time.</strong></p>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FAQ -->
+<section>
+  <div class="label">FAQ</div>
+  <h2>Common questions.</h2>
+  <div class="faqs">
+    <div class="faq">
+      <h3>Is this just a bid aggregator?</h3>
+      <p>No. Bid aggregators show projects already out for bid — too late to position. Upstream finds projects at the planning and permit stage, 60–120 days before a formal bid process starts.</p>
+    </div>
+    <div class="faq">
+      <h3>What geographies do you cover?</h3>
+      <p>Founding members choose their target geography. We configure your scrapers to match your market specifically.</p>
+    </div>
+    <div class="faq">
+      <h3>What types of projects does it cover?</h3>
+      <p>Commercial, institutional, municipal, and multi-family. We filter to your specific project types and size thresholds.</p>
+    </div>
+    <div class="faq">
+      <h3>When do I receive my first brief?</h3>
+      <p>Founding members receive their first brief within 2 weeks of signup while we configure your intelligence layer.</p>
+    </div>
+    <div class="faq">
+      <h3>What if I want to cancel?</h3>
+      <p>Month-to-month. No contracts. Cancel anytime — no questions asked.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to stop chasing<br/>and start positioning?</h2>
+  <p>10 founding member spots. $199/month, locked forever. First brief in 2 weeks.</p>
+  <a class="cta-primary" href="https://buy.stripe.com/8x2bJ2aH89bb3D36dn9Ve00">Claim Your Founding Member Spot — $199/mo</a>
+  <p style="margin-top: 16px; font-size: 13px; color: var(--muted);">No contracts. Cancel anytime. Standard pricing $349/month after founding cohort closes.</p>
+</section>
+
+<footer>
+  © 2025 Upstream BD · <a href="mailto:hello@upstreambd.com" style="color: var(--muted); text-decoration: none;">hello@upstreambd.com</a>
+</footer>
+
+</body>
+</html>
